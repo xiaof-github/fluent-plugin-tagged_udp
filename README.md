@@ -8,7 +8,7 @@ Fluentd checks the destination status by UDP packets and messages are transferre
 
 Add this line to your application's Gemfile:
 
-    gem 'fluent-plugin-tagged_udp'
+    gem 'fluent-plugin-tagged_udpa'
 
 And then execute:
 
@@ -16,12 +16,12 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install fluent-plugin-tagged_udp
+    $ gem install fluent-plugin-tagged_udpa
 
 
 ## Usage
 
-fluent-plugin-tagged_udp provides UDP input/output function for fluentd.
+fluent-plugin-tagged_udpa provides UDP input/output function for fluentd.
 
 Input plugin can be used via source directive.
 
@@ -47,12 +47,16 @@ Output Plugin can be used via match directive.
 ```
 
 <match **>
-  type tagged_udp
+  type tagged_udpa
   host 127.0.0.1
   port 20001
+  payload_key message
 </match>
 
 ```
+only send record key ,not in json format
+- payload_key 
+
 
 Optional parameters are as follows:
 

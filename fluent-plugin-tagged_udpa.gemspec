@@ -3,14 +3,14 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
-  spec.name          = "fluent-plugin-tagged_udp"
+  spec.name          = "fluent-plugin-tagged_udpa"
   spec.version       = "0.0.7"
-  spec.authors       = ["Toyokazu Akiyama"]
-  spec.email         = ["toyokazu@gmail.com"]
+  spec.authors       = ["xiaof"]
+  spec.email         = ["xiao000011@gmail.com"]
 
   spec.summary       = %q{fluentd input/output plugin for tagged UDP message}
   spec.description   = %q{fluentd input/output plugin for tagged UDP message}
-  spec.homepage      = "https://github.com/toyokazu/fluent-plugin-tagged_udp"
+  spec.homepage      = "https://github.com/xiaof-github/fluent-plugin-tagged_udp"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.gsub(/images\/[\w\.]+\n/, "").split($/)

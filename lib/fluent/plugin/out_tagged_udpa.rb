@@ -3,7 +3,7 @@ module Fluent
 
     # First, register the plugin. NAME is the name of this plugin
     # and identifies the plugin in the configuration file.
-    Fluent::Plugin.register_output('tagged_udp', self)
+    Fluent::Plugin.register_output('tagged_udpa', self)
 
     config_param :host, :string, :default => '127.0.0.1'
     config_param :port, :integer, :default => 1883
@@ -12,6 +12,7 @@ module Fluent
     config_param :time_format, :string, :default => nil
     config_param :send_time, :bool, :default => false
     config_param :send_time_key, :string, :default => "send_time"
+    config_param :payload_key, :string, :default => 'message'
 
     require 'socket'
 
@@ -59,8 +60,7 @@ module Fluent
         es.each {|time,record|
           $log.debug "#{tag}, #{format_time(time)}, #{add_send_time(record)}"
           @socket.send(
-            # tag is inserted into the head of the message
-            "#{tag}#{@tag_sep}#{add_send_time(record).merge(timestamp_hash(time)).to_json}",
+            "#{record[@payload_key]}",
             0, @host, @port
           )
         }
